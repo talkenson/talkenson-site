@@ -1,0 +1,84 @@
+.talBrText {
+  margin: 0;
+  flex: 0 1 auto;
+  font-size: 80px;
+  z-index: 100;
+  @media screen and (orientation: landscape) and (min-device-height: 480px) {
+    font-size: 118px;
+  }
+}
+
+.subText {
+  margin: 0;
+  font-size: 36px;
+  z-index: 100;
+  @media screen and (orientation: landscape) and (min-device-height: 480px) {
+    font-size: 44px;
+  }
+}
+
+.container {
+  display: flex;
+  position: relative;
+  flex-flow: column nowrap;
+  align-items: center;
+  align-content: center;
+  height: 100vh;
+  color: #333333;
+  justify-content: center;
+  user-select: none;
+  overflow: hidden;
+}
+
+.bgPic {
+  position: absolute;
+  max-height: 100%;
+  max-width: 90%;
+  opacity: 0.9;
+  z-index: 10;
+}
+
+@media screen and (orientation: landscape) {
+  .develop {
+    bottom: -10%;
+    left: 50px;
+    height: 50%;
+    @media (min-device-height: 480px) {
+      height: 60%;
+      bottom: 5%;
+    }
+  }
+
+  .sense {
+    bottom: -30%;
+    left: 15%;
+    height: 100%;
+    @media (min-device-height: 480px) {
+      height: 88%;
+      bottom: 5%;
+      left: 10%;
+    }
+  }
+
+  .talks {
+    top: 6%;
+    height: 68%;
+    right: 2%;
+    @media (min-device-height: 480px) {
+      height: 70%;
+      top: 5%;
+      right: 5%;
+    }
+  }
+
+  .beard {
+    top: 0;
+    left: 30px;
+    height: 80%;
+    @media (min-device-height: 480px) {
+      height: 82%;
+      left: 50px;
+    }
+  }
+}
+
