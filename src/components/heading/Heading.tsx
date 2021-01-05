@@ -19,25 +19,25 @@ const subStrings = [
     text: 'Natural Development',
     pic: bg_development,
     class: styles.develop,
-    id: 'develop'
+    id: 'develop',
   },
   {
     text: 'Natural Sense',
     pic: bg_sense,
     class: styles.sense,
-    id: 'sense'
+    id: 'sense',
   },
   {
     text: 'Natural Talks',
     pic: bg_talks,
     class: styles.talks,
-    id: 'talks'
+    id: 'talks',
   },
   {
     text: 'Natural Beard',
     pic: bg_beard,
     class: styles.beard,
-    id: 'beard'
+    id: 'beard',
   },
 ]
 
@@ -92,6 +92,7 @@ const Heading = (props: { go: (paneName: string) => void }) => {
             className={styles.socials_button}
             href={'https://github.com/talkenson'}
             target='_blank'
+            rel='noreferrer'
           >
             <i className='fab fa-github-alt'></i>
           </a>
@@ -99,6 +100,7 @@ const Heading = (props: { go: (paneName: string) => void }) => {
             className={styles.socials_button}
             href={'https://vk.com/talkenson'}
             target='_blank'
+            rel='noreferrer'
           >
             <i className='fab fa-vk'></i>
           </a>
@@ -106,6 +108,7 @@ const Heading = (props: { go: (paneName: string) => void }) => {
             className={styles.socials_button}
             href={'https://twitter.com/talkenson_'}
             target='_blank'
+            rel='noreferrer'
           >
             <i className='fab fa-twitter'></i>
           </a>
@@ -113,10 +116,12 @@ const Heading = (props: { go: (paneName: string) => void }) => {
             className={styles.socials_button}
             href={'https://t.me/talkenson'}
             target='_blank'
+            rel='noreferrer'
           >
             <i className='fab fa-telegram-plane'></i>
           </a>
         </div>
+        <div className={styles.alphasign}>α</div>
         Talkenson
       </div>
       <p

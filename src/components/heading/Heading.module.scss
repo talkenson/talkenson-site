@@ -1,4 +1,4 @@
-@import "../../shared.scss";
+@import '../../shared.scss';
 .talBrText {
   margin: 0;
   flex: 0 1 auto;
@@ -22,7 +22,7 @@
   }
   & i {
     color: $col-dark;
-    transition: all .3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     &:hover {
       transform: translate(0, -5px);
       color: #222222;
@@ -30,6 +30,18 @@
   }
   &_button {
     cursor: pointer;
+  }
+}
+
+.alphasign {
+  position: absolute;
+  right: -20px;
+  bottom: 10px;
+  font-size: 36px;
+  @media screen and (orientation: landscape) and (min-device-height: 480px) {
+    font-size: 52px;
+    right: -35px;
+    bottom: 18px;
   }
 }
 
@@ -171,4 +183,3 @@ $picture-target-opacity: 0.65;
     }
   }
 }
-
