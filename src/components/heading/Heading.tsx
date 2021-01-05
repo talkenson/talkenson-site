@@ -33,8 +33,9 @@ const subStrings = [
 
 const Heading = () => {
   const [currentSub, setCurrentSub] = useState<number>(0);
-  const [currentCount, setCount] = useState(1);
+  const [currentCount, setCount] = useState(4);
   const timer = () => setCount(currentCount - 1);
+  const [fadeEnabled, setFade] = useState(false)
 
   const resetTimer = () => {
     setCount(4)
@@ -43,25 +44,40 @@ const Heading = () => {
   useEffect(
     () => {
       if (currentCount <= 0) {
-        fadeString()
         resetTimer()
       }
-      const id = setInterval(timer, 1000);
+      if (currentCount === 1) {
+        fadeString()
+      }
+      const id = setInterval(timer, 500);
       return () => clearInterval(id);
     },
     [currentCount]
   );
 
   const fadeString = () => {
-
-    setCurrentSub((currentSub + 1) % subStrings.length)
+    setFade(true)
+    setTimeout(() => {
+      setCurrentSub((currentSub + 1) % subStrings.length)
+    }, 500)
+    setTimeout(() => {
+      setFade(false)
+    }, 1000)
   }
 
   return (
     <div className={styles.container}>
       <p className={styles.talBrText}>Talkenson</p>
-      <p className={classNames(styles.subText)}>{subStrings[currentSub].text}</p>
-      <img src={subStrings[currentSub].pic} className={classNames(styles.bgPic, subStrings[currentSub].class)} />
+      <p className={classNames(styles.subText, fadeEnabled ? styles.slideAnimation : '')}>{subStrings[currentSub].text}</p>
+      <img
+        src={subStrings[currentSub].pic}
+        className={
+          classNames(
+            styles.bgPic,
+            subStrings[currentSub].class,
+            fadeEnabled ? styles.picSlideAnimation : ''
+          )}
+      />
     </div>
   )
 }

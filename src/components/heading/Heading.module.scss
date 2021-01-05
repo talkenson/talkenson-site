@@ -17,6 +17,32 @@
   }
 }
 
+.slideAnimation {
+  animation-duration: 1s;
+  animation-name: slidethr;
+  animation-direction: reverse;
+}
+
+@keyframes slidethr {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  45% {
+    opacity: 0;
+    transform: translate(0, 20px);
+  }
+  55% {
+    opacity: 0;
+    transform: translate(0, -20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+
 .container {
   display: flex;
   position: relative;
@@ -34,8 +60,33 @@
   position: absolute;
   max-height: 100%;
   max-width: 90%;
-  opacity: 0.9;
+  opacity: 0.7;
   z-index: 10;
+}
+
+.picSlideAnimation {
+  animation-duration: 1s;
+  animation-name: slidepics;
+  //animation-direction: reverse;
+}
+
+@keyframes slidepics {
+  0% {
+    opacity: 0.7;
+    transform: translate(0, 0);
+  }
+  45% {
+    opacity: 0;
+    transform: translate(0, 20px);
+  }
+  55% {
+    opacity: 0;
+    transform: translate(0, -20px);
+  }
+  90% {
+    opacity: 0.7;
+    transform: translate(0, 0);
+  }
 }
 
 @media screen and (orientation: landscape) {
@@ -74,9 +125,9 @@
   .beard {
     top: 0;
     left: 30px;
-    height: 80%;
+    height: 75%;
     @media (min-device-height: 480px) {
-      height: 82%;
+      height: 75%;
       left: 50px;
     }
   }
