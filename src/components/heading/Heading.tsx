@@ -7,38 +7,48 @@ import bg_sense from '../../static/svg/sense.svg'
 import bg_talks from '../../static/svg/talks.svg'
 import bg_beard from '../../static/svg/beard.svg'
 
+/*
+import { ReactComponent as bg_development } from '../../static/svg/development.svg'
+import { ReactComponent as bg_sense } from '../../static/svg/sense.svg'
+import { ReactComponent as bg_talks } from '../../static/svg/talks.svg'
+import { ReactComponent as bg_beard } from '../../static/svg/beard.svg'
+*/
+
 const subStrings = [
   {
     text: 'Natural Development',
     pic: bg_development,
     class: styles.develop,
+    id: 'develop'
   },
   {
     text: 'Natural Sense',
     pic: bg_sense,
     class: styles.sense,
+    id: 'sense'
   },
   {
     text: 'Natural Talks',
     pic: bg_talks,
     class: styles.talks,
+    id: 'talks'
   },
   {
     text: 'Natural Beard',
     pic: bg_beard,
     class: styles.beard,
+    id: 'beard'
   },
 ]
 
 const Heading = (props: { go: (paneName: string) => void }) => {
   const [currentSub, setCurrentSub] = useState<number>(0)
   const [currentCount, setCount] = useState(4)
+  const resetTimer = () => setCount(4)
   const timer = () => setCount(currentCount - 1)
-  const [fadeEnabled, setFade] = useState(false)
 
-  const resetTimer = () => {
-    setCount(4)
-  }
+  const [fadeEnabled, setFade] = useState(false)
+  const [curPic, setCurPic] = useState<string>('')
 
   useEffect(() => {
     if (currentCount <= 0) {
@@ -60,6 +70,11 @@ const Heading = (props: { go: (paneName: string) => void }) => {
       setFade(false)
     }, 1000)
   }
+
+  useEffect(() => {
+    setCurPic('')
+    setCurPic(subStrings[currentSub].pic)
+  }, [currentSub])
 
   return (
     <div className={styles.container}>
@@ -113,12 +128,14 @@ const Heading = (props: { go: (paneName: string) => void }) => {
         {subStrings[currentSub].text}
       </p>
       <img
-        src={subStrings[currentSub].pic}
+        src={curPic}
         className={classNames(
           styles.bgPic,
           subStrings[currentSub].class,
-          fadeEnabled ? styles.picSlideAnimation : ''
+          fadeEnabled ? styles.picSlideAnimation : '',
+          !curPic ? styles.noDisplay : ''
         )}
+        alt={subStrings[currentSub].id}
       />
     </div>
   )
