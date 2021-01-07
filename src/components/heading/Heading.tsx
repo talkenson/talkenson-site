@@ -7,35 +7,46 @@ import bg_sense from '../../static/svg/sense.svg'
 import bg_talks from '../../static/svg/talks.svg'
 import bg_beard from '../../static/svg/beard.svg'
 
-/*
-import { ReactComponent as bg_development } from '../../static/svg/development.svg'
-import { ReactComponent as bg_sense } from '../../static/svg/sense.svg'
-import { ReactComponent as bg_talks } from '../../static/svg/talks.svg'
-import { ReactComponent as bg_beard } from '../../static/svg/beard.svg'
-*/
+const DevelopLogo = () => (
+  <img
+    src={bg_development}
+    className={classNames(styles.bgPic, styles.develop)}
+  />
+)
+
+const SenseLogo = () => (
+  <img src={bg_sense} className={classNames(styles.bgPic, styles.sense)} />
+)
+
+const TalksLogo = () => (
+  <img src={bg_talks} className={classNames(styles.bgPic, styles.talks)} />
+)
+
+const BeardLogo = () => (
+  <img src={bg_beard} className={classNames(styles.bgPic, styles.beard)} />
+)
 
 const subStrings = [
   {
     text: 'Natural Development',
-    pic: bg_development,
-    class: styles.develop,
+    pic: DevelopLogo,
     id: 'develop',
   },
   {
     text: 'Natural Sense',
-    pic: bg_sense,
+    pic: SenseLogo,
     class: styles.sense,
     id: 'sense',
   },
   {
     text: 'Natural Talks',
-    pic: bg_talks,
+    pic: TalksLogo,
     class: styles.talks,
     id: 'talks',
   },
   {
     text: 'Natural Beard',
-    pic: bg_beard,
+    pic: BeardLogo,
     class: styles.beard,
     id: 'beard',
   },
@@ -43,37 +54,32 @@ const subStrings = [
 
 const Heading = (props: { go: (paneName: string) => void }) => {
   const [currentSub, setCurrentSub] = useState<number>(0)
-  const [currentCount, setCount] = useState(4)
-  const resetTimer = () => setCount(4)
+  const initialTimer = 10
+  const [currentCount, setCount] = useState(initialTimer)
+  const resetTimer = () => setCount(initialTimer)
   const timer = () => setCount(currentCount - 1)
 
   const [fadeEnabled, setFade] = useState(false)
-  const [curPic, setCurPic] = useState<string>('')
+  const [cPic, setCPic] = useState<JSX.Element>(DevelopLogo)
+
 
   useEffect(() => {
-    if (currentCount <= 0) {
+    if (currentCount === 0) {
+      setCurrentSub((currentSub + 1) % subStrings.length)
       resetTimer()
     }
     if (currentCount === 1) {
-      fadeString()
+      setFade(true)
+    }
+    if (currentCount === initialTimer - 1) {
+      setFade(false)
     }
     const id = setInterval(timer, 500)
     return () => clearInterval(id)
   }, [currentCount])
 
-  const fadeString = () => {
-    setFade(true)
-    setTimeout(() => {
-      setCurrentSub((currentSub + 1) % subStrings.length)
-    }, 500)
-    setTimeout(() => {
-      setFade(false)
-    }, 1000)
-  }
-
   useEffect(() => {
-    setCurPic('')
-    setCurPic(subStrings[currentSub].pic)
+    setCPic(subStrings[currentSub].pic)
   }, [currentSub])
 
   return (
@@ -120,6 +126,14 @@ const Heading = (props: { go: (paneName: string) => void }) => {
           >
             <i className='fab fa-telegram-plane'></i>
           </a>
+          <a
+            className={styles.socials_button}
+            href={'mailto:me@talkenson.ru'}
+            target='_blank'
+            rel='noreferrer'
+          >
+            <i className='fas fa-at'></i>
+          </a>
         </div>
         <div className={styles.alphasign}>α</div>
         Talkenson
@@ -132,16 +146,15 @@ const Heading = (props: { go: (paneName: string) => void }) => {
       >
         {subStrings[currentSub].text}
       </p>
-      <img
-        src={curPic}
+      <div
         className={classNames(
-          styles.bgPic,
-          subStrings[currentSub].class,
+          styles.bgPicContainer,
           fadeEnabled ? styles.picSlideAnimation : '',
-          !curPic ? styles.noDisplay : ''
+          subStrings[currentSub].class
         )}
-        alt={subStrings[currentSub].id}
-      />
+      >
+        {cPic}
+      </div>
     </div>
   )
 }
