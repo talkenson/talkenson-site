@@ -2,17 +2,15 @@
 $col-dark: #333333;
 $col-light-bg: #eceecec;
 
-
-
 @font-face {
-  font-family: "Muller";
-  src: url("./fonts/muller/MullerExtraBoldItalic.eot");
-  src: local("Muller ExtraBold Italic"), local("MullerExtraBoldItalic"),
-  url("./fonts/muller/MullerExtraBoldItalic.eot?#iefix")
-  format("embedded-opentype"),
-  url("./fonts/muller/MullerExtraBoldItalic.woff2") format("woff2"),
-  url("./fonts/muller/MullerExtraBoldItalic.woff") format("woff"),
-  url("./fonts/muller/MullerExtraBoldItalic.ttf") format("truetype");
+  font-family: 'Muller';
+  src: url('./fonts/muller/MullerExtraBoldItalic.eot');
+  src: local('Muller ExtraBold Italic'), local('MullerExtraBoldItalic'),
+    url('./fonts/muller/MullerExtraBoldItalic.eot?#iefix')
+      format('embedded-opentype'),
+    url('./fonts/muller/MullerExtraBoldItalic.woff2') format('woff2'),
+    url('./fonts/muller/MullerExtraBoldItalic.woff') format('woff'),
+    url('./fonts/muller/MullerExtraBoldItalic.ttf') format('truetype');
   font-weight: 800;
   font-style: italic;
 }

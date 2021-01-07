@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import styles from './Heading.module.scss'
 import classNames from 'classnames'
-
-import bg_development from '../../static/svg/development.svg'
+/*
+import bg_develop from '../../static/svg/development.svg'
 import bg_sense from '../../static/svg/sense.svg'
 import bg_talks from '../../static/svg/talks.svg'
 import bg_beard from '../../static/svg/beard.svg'
+*/
 
-const DevelopLogo = () => (
-  <img
-    src={bg_development}
-    className={classNames(styles.bgPic, styles.develop)}
-  />
-)
+/*
+const DevelopLogo =
+  <img src={bg_develop} className={classNames(styles.bgPic, styles.develop)} />
 
-const SenseLogo = () => (
+
+const SenseLogo =
   <img src={bg_sense} className={classNames(styles.bgPic, styles.sense)} />
-)
+
 
 const TalksLogo = () => (
   <img src={bg_talks} className={classNames(styles.bgPic, styles.talks)} />
@@ -24,12 +23,46 @@ const TalksLogo = () => (
 
 const BeardLogo = () => (
   <img src={bg_beard} className={classNames(styles.bgPic, styles.beard)} />
+)*/
+
+import { ReactComponent as DevelopSVG } from '../../static/svg/development.svg'
+import { ReactComponent as SenseSVG } from '../../static/svg/sense.svg'
+import { ReactComponent as TalksSVG } from '../../static/svg/talks.svg'
+import { ReactComponent as BeardSVG } from '../../static/svg/beard.svg'
+
+const DevelopLogo = (
+  <DevelopSVG
+    className={classNames(styles.bgPic, styles.develop)}
+    preserveAspectRatio='xMinYMid meet'
+  />
+)
+
+const SenseLogo = (
+  <SenseSVG
+    className={classNames(styles.bgPic, styles.sense)}
+    preserveAspectRatio='xMidYMid meet'
+  />
+)
+
+const TalksLogo = (
+  <TalksSVG
+    className={classNames(styles.bgPic, styles.talks)}
+    preserveAspectRatio='xMaxYMid meet'
+  />
+)
+
+const BeardLogo = (
+  <BeardSVG
+    className={classNames(styles.bgPic, styles.beard)}
+    preserveAspectRatio='xMinYMid meet'
+  />
 )
 
 const subStrings = [
   {
     text: 'Natural Development',
     pic: DevelopLogo,
+    class: styles.develop,
     id: 'develop',
   },
   {
@@ -54,14 +87,13 @@ const subStrings = [
 
 const Heading = (props: { go: (paneName: string) => void }) => {
   const [currentSub, setCurrentSub] = useState<number>(0)
-  const initialTimer = 10
+  const initialTimer = 5
   const [currentCount, setCount] = useState(initialTimer)
   const resetTimer = () => setCount(initialTimer)
   const timer = () => setCount(currentCount - 1)
 
   const [fadeEnabled, setFade] = useState(false)
   const [cPic, setCPic] = useState<JSX.Element>(DevelopLogo)
-
 
   useEffect(() => {
     if (currentCount === 0) {
@@ -149,8 +181,7 @@ const Heading = (props: { go: (paneName: string) => void }) => {
       <div
         className={classNames(
           styles.bgPicContainer,
-          fadeEnabled ? styles.picSlideAnimation : '',
-          subStrings[currentSub].class
+          fadeEnabled ? styles.picSlideAnimation : ''
         )}
       >
         {cPic}
