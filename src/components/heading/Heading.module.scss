@@ -15,12 +15,12 @@
   position: absolute;
   right: -0.22em;
   top: -12px;
-  letter-spacing: 0.4em; // 0.25
+  letter-spacing: 0.35em; // 0.25
   font-size: 26px;
   @media screen and (orientation: landscape) and (min-device-height: 480px) {
     right: -0.2em;
     font-size: 36px; // 38
-    top: -18px;
+    top: -16px;
   }
   & i {
     color: $col-dark;
