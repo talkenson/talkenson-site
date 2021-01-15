@@ -56,6 +56,9 @@ $anchor-width-for-port: 393px; // min, so -1 to target
   @media screen and (orientation: portrait) {
     opacity: 0;
   }
+  &:hover {
+    color: #111111;
+  }
 }
 
 .subText {
@@ -82,11 +85,11 @@ $anchor-width-for-port: 393px; // min, so -1 to target
     opacity: 1;
     transform: translate(0, 0);
   }
-  45% {
+  40% {
     opacity: 0;
     transform: translate(0, 20px);
   }
-  55% {
+  60% {
     opacity: 0;
     transform: translate(0, -20px);
   }
@@ -150,11 +153,11 @@ $picture-target-opacity: 0.65;
     opacity: $picture-target-opacity;
     transform: translate(0, 0);
   }
-  45% {
+  40% {
     opacity: 0;
     transform: translate(0, 20px);
   }
-  55% {
+  60% {
     opacity: 0;
     transform: translate(0, -20px);
   }

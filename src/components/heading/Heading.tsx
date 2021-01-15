@@ -99,14 +99,13 @@ const Heading = (props: { go: (paneName: string) => void }) => {
   }
 
   useEffect(() => {
-    console.log('step', currentCount)
     if (currentCount === 0) {
       setCurrentSub((currentSub + 1) % subStrings.length)
     }
     if (currentCount === 1) {
       setFade(true)
     }
-    if (currentCount === initialTimer - 1) {
+    if (currentCount === initialTimer) {
       setFade(false)
     }
     sleep(500).then(() => {
