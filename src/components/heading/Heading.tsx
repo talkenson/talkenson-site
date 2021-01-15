@@ -90,15 +90,18 @@ const Heading = (props: { go: (paneName: string) => void }) => {
   const initialTimer = 5
   const [currentCount, setCount] = useState(initialTimer)
   const resetTimer = () => setCount(initialTimer)
-  const timer = () => setCount(currentCount - 1)
 
   const [fadeEnabled, setFade] = useState(false)
   const [cPic, setCPic] = useState<JSX.Element>(DevelopLogo)
 
+  const sleep = (ms: number) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
   useEffect(() => {
+    console.log('step', currentCount)
     if (currentCount === 0) {
       setCurrentSub((currentSub + 1) % subStrings.length)
-      resetTimer()
     }
     if (currentCount === 1) {
       setFade(true)
@@ -106,8 +109,11 @@ const Heading = (props: { go: (paneName: string) => void }) => {
     if (currentCount === initialTimer - 1) {
       setFade(false)
     }
-    const id = setInterval(timer, 500)
-    return () => clearInterval(id)
+    sleep(500).then(() => {
+      if (currentCount > 0)
+      setCount(currentCount - 1)
+      else resetTimer()
+    })
   }, [currentCount])
 
   useEffect(() => {
