@@ -85,7 +85,11 @@ const subStrings = [
   },
 ]
 
-const Heading = (props: { go: (paneName: string) => void }) => {
+interface IProps {
+
+}
+
+const Heading = (props: IProps) => {
   const [currentSub, setCurrentSub] = useState<number>(0)
   const initialTimer = 5
   const [currentCount, setCount] = useState(initialTimer)
