@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styles from './Studio.module.scss'
 import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch, useParams } from 'react-router-dom'
 import classNames from 'classnames'
+import { getFaviconEl } from '../../core/faviconMan'
 
 interface IProps {
 
@@ -15,6 +16,11 @@ const Topic = () => {
 
 const Studio = (props: IProps) => {
   let match = useRouteMatch();
+
+  useEffect(() => {
+    document.title = 'SpeaCup Prod. / T.Studio';
+  }, [])
+
 
   return (
     <div className={styles.container}>

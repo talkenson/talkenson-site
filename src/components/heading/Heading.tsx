@@ -103,6 +103,11 @@ const Heading = (props: IProps) => {
   }
 
   useEffect(() => {
+    document.title = 'Talkenson / The Developer / Vitaly Shatalov'
+  }, [])
+
+
+  useEffect(() => {
     if (currentCount === 0) {
       setCurrentSub((currentSub + 1) % subStrings.length)
     }
