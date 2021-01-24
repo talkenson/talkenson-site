@@ -4,13 +4,35 @@ $col-light-bg: #eceecec;
 
 @font-face {
   font-family: 'Muller';
+  font-display: block;
   src: url('./fonts/muller/MullerExtraBoldItalic.eot');
   src: local('Muller ExtraBold Italic'), local('MullerExtraBoldItalic'),
-    url('./fonts/muller/MullerExtraBoldItalic.eot?#iefix')
-      format('embedded-opentype'),
-    url('./fonts/muller/MullerExtraBoldItalic.woff2') format('woff2'),
-    url('./fonts/muller/MullerExtraBoldItalic.woff') format('woff'),
-    url('./fonts/muller/MullerExtraBoldItalic.ttf') format('truetype');
+  url('./fonts/muller/MullerExtraBoldItalic.eot?#iefix')
+  format('embedded-opentype'),
+  url('./fonts/muller/MullerExtraBoldItalic.woff2') format('woff2'),
+  url('./fonts/muller/MullerExtraBoldItalic.woff') format('woff'),
+  url('./fonts/muller/MullerExtraBoldItalic.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: 'Anonymous Pro';
+  font-display: block;
+  src: local('Anonymous Pro'), local('AnonymousPro'),
+  url('./fonts/anonymous/anonymouspro.woff2') format('woff2'),
+  url('./fonts/anonymous/anonymouspro.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Anonymous Pro';
+  font-display: block;
+  src: local('Anonymous Pro Bold'), local('AnonymousPro-Bold'),
+  url('./fonts/anonymous/anonymousprobold.woff2') format('woff2'),
+  url('./fonts/anonymous/anonymousprobold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
 
 $fa-font-path: '../../fonts/webfonts';
